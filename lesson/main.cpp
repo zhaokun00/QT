@@ -1,5 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+//要使用打印信息，包含以下头文件信息
+#include<iostream>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
@@ -30,5 +33,20 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     //3.QT应用主事件循环
+
+    //在源文件中输出打印信息
+    {
+        int i  = 100;
+        //C++中标准的字符串类型
+        std::string s = "QT";
+        //QT中的字符串类型
+        QString str = "QT";
+
+        //c++标准的的输出信息
+        std::cout << "debug std cout i = " << i << "str = " << s << std::endl;
+        //QT中标准的输出信息，不能输出C++中的字符串类型
+        qDebug() << "debug std cout i = " << i << "str = " << str ;
+    }
+
     return app.exec();
 }
